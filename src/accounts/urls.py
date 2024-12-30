@@ -1,7 +1,11 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.shortcuts import redirect
+from . import views
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),  # Link to the accounts app
+    path('login/', views.login_view, name='login'),
+    path('signup/', views.signup_view, name='signup'),
+    path('logout/', views.logout_view, name='logout'),
+    path('', lambda request: redirect('login'))
 ]
